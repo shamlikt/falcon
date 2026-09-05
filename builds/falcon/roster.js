@@ -426,7 +426,7 @@
   });
 
   window.FALCON_ROSTER = {
-    people: PEOPLE, select: selectPerson,
+    people: PEOPLE, select: selectPerson, config: CFG,
     current: function () { return current; },
     splat: function () { return splat; },
     figures: function () { return FIGURES; }
