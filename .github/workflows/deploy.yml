@@ -1,0 +1,62 @@
+name: Deploy Team Falcon to GitHub Pages
+
+# The site is static: builds/falcon/ is served as-is. This workflow checks the
+# roster data and the figure manifest, then publishes that folder (minus dev
+# files) to GitHub Pages. See DEPLOY.md for the full runbook.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check roster data (names, numbers, captions)
+        run: node tools/check-roster.mjs
+
+      # No .ply files exist in CI (they are git-ignored), so this only re-indexes
+      # the committed .splat files. It fails if figures.json was not regenerated
+      # after a figure changed.
+      - name: Check the figure manifest matches the committed figures
+        run: |
+          node tools/build-figures.mjs
+          git diff --exit-code -- builds/falcon/assets/figures.json
+
+      - name: Stage the site
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude node_modules --exclude lab \
+            --exclude 'package.json' --exclude 'package-lock.json' \
+            builds/falcon/ _site/
+          du -sh _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
