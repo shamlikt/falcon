@@ -1,24 +1,32 @@
 /* ============================================================================
-   roster.js: Team Falcon roster on the original Falcon page grammar.
+   roster.js: Team Falcon, one page per player.
 
-   The fixed arena shows ONE selected player's live 3D figure that turns as you
-   scroll (default: PMMuneer); the dossier reveals that player's fancy captions
-   line by line; the respawn act scatters and reforms the figure; and "Meet the
-   Squad" is a picker - choosing a player swaps the arena figure + dossier and
-   returns you to the top. Reuses window.ScrollCraft + window.FalconSplat.
+   The fixed arena shows the selected player's live 3D figure turning as you
+   scroll; the dossier reveals that player's captions line by line; the respawn
+   act scatters and reforms the figure; "Meet the Squad" is a grid of links,
+   one per player. The URL names the player (`?player=<slug>`), so every
+   player has a shareable page and the back button works; clicking a card
+   swaps the figure in place without a reload and lazy-loads only that
+   player's .splat.
 
-   Real captures: PMMuneer -> pmmuneer.splat, AhamedKabir -> ahamedkabir.splat.
-   Everyone else borrows avatar.splat (Kabeer / gaussians.ply) until their own
-   <name>.ply is converted with tools/ply2splat.mjs.
+   Data comes from players.js (window.FALCON_PLAYERS). Figures come from
+   assets/figures.json, written by tools/build-figures.mjs from the <Name>.ply
+   files in the repo root; a player with no capture borrows the placeholder.
+   Reuses window.ScrollCraft (never edited) and window.FalconSplat.
    ========================================================================== */
 (function () {
   'use strict';
+
+  var DATA = window.FALCON_PLAYERS;
+  var PEOPLE = DATA.PEOPLE, EVENTS = DATA.EVENTS, slug = DATA.slug, DEFAULT_PLAYER = DATA.DEFAULT_PLAYER;
 
   var CFG = {
     up: [0, 0, 1], center: [0.0, -0.05, 0.05], frontYaw: 90, startYaw: 125, turn: 325,
     pitch: -6, fov: 34, scatter: 1.8, accent: '#F7B32B',
     desktop: { dist: 4.3, shift: [0.2, -0.06], maxDpr: 1.5, maxCount: Infinity, embers: 64 },
-    mobile: { dist: 4.6, fitWidth: 2.1, shift: [0.0, 0.24], maxDpr: 1.25, maxCount: 120000, embers: 28 }
+    mobile: { dist: 4.6, fitWidth: 2.1, shift: [0.0, 0.24], maxDpr: 1.25, maxCount: 120000, embers: 28 },
+    manifest: 'assets/figures.json',
+    placeholderFile: 'assets/avatar.splat'   // hard fallback if the manifest itself fails
   };
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -34,83 +42,7 @@
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) {
     return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
-  var EVENTS = [
-    { epic: 'The Odyssey of the War of Thugs', real: 'Tug of War' },
-    { epic: 'Rise of the Net Titans', real: 'Volleyball' },
-    { epic: 'The Grand Chaos Gauntlet', real: 'Fun Games' },
-    { epic: 'The Everlasting Sprint Saga', real: 'Relay Race' },
-    { epic: 'Throne of the Last Seat', real: 'Musical Chairs' },
-    { epic: 'The Balance of Fates', real: 'Lemon & Spoon' },
-    { epic: 'The Leap of a Thousand Bounds', real: 'Sack Race' }
-  ];
-
-  var PEOPLE = [
-    { name: 'PMMuneer', initials: 'PM', num: 2, event: 3, splat: 'assets/pmmuneer.splat', lines: [
-      ['Callsign', 'Marshal of the Everlasting Sprint Saga.'],
-      ['Doctrine', 'Runs like the deadline is personal.'],
-      ['Verdict', 'Overtakes on the corners you did not know existed.'] ] },
-    { name: 'AhamedKabir', initials: 'AK', num: 5, event: 0, splat: 'assets/ahamedkabir.splat', lines: [
-      ['Callsign', 'Ironhand of the War of Thugs.'],
-      ['Doctrine', 'The rope has filed a formal complaint.'],
-      ['Verdict', 'Anchors the line like the ground owes him money.'] ] },
-    { name: 'Lifin', initials: 'LF', num: 10, captain: true, event: 0, lines: [
-      ['Callsign', 'Supreme Warlord of the Odyssey of the War of Thugs.'],
-      ['Doctrine', 'Where the rope leads, the enemy follows.'],
-      ['Verdict', 'Never lost a war he started.'] ] },
-    { name: 'Ashna', initials: 'AS', num: 7, captain: true, event: 1, lines: [
-      ['Callsign', 'Co-Sovereign of the Falcons.'],
-      ['Doctrine', 'Serene in the storm, merciless at the net.'],
-      ['Verdict', 'Executes the play before you finish blinking.'] ] },
-    { name: 'Nabeela Abdul', initials: 'NA', num: 4, event: 2, lines: [
-      ['Callsign', 'Keeper of the Grand Chaos Gauntlet.'],
-      ['Doctrine', 'Every fun game becomes a documented conquest.'],
-      ['Verdict', 'Bends the rules strategically, wins anyway.'] ] },
-    { name: 'Hamsa', initials: 'HM', num: 9, event: 3, lines: [
-      ['Callsign', 'Oracle of the Everlasting Sprint Saga.'],
-      ['Doctrine', 'At the line before the whistle believes it.'],
-      ['Verdict', 'Time is a suggestion; Hamsa is the correction.'] ] },
-    { name: 'AnsinaMHaroon', initials: 'AH', num: 3, event: 5, lines: [
-      ['Callsign', 'Empress of the Balance of Fates.'],
-      ['Doctrine', 'One lemon, one spoon, zero doubt.'],
-      ['Verdict', 'Steady hands have never once betrayed her.'] ] },
-    { name: 'Shamlik', initials: 'SK', num: 8, event: 2, lines: [
-      ['Callsign', 'Chaos Strategist of the Grand Chaos Gauntlet.'],
-      ['Doctrine', 'Loses with dignity, wins with suspicion.'],
-      ['Verdict', 'Nobody is sure how he is winning. Least of all him.'] ] },
-    { name: 'RemyaK', initials: 'RK', num: 11, event: 1, lines: [
-      ['Callsign', 'Duchess of the Net Titans.'],
-      ['Doctrine', 'Spikes first. Apologizes never.'],
-      ['Verdict', 'The net gave up filing complaints.'] ] },
-    { name: 'Bajal', initials: 'BJ', num: 6, event: 6, lines: [
-      ['Callsign', 'Baron of the Leap of a Thousand Bounds.'],
-      ['Doctrine', 'Gravity is a polite suggestion.'],
-      ['Verdict', 'Lands three feet past where physics allows.'] ] },
-    { name: 'SakeerSheik', initials: 'SS', num: 12, event: 4, lines: [
-      ['Callsign', 'Sultan of the Last Seat.'],
-      ['Doctrine', 'When the music stops, the throne is already his.'],
-      ['Verdict', 'Has never once been caught standing.'] ] },
-    { name: 'SinashShajahan', initials: 'SJ', num: 15, event: 0, lines: [
-      ['Callsign', 'Colossus of the War of Thugs.'],
-      ['Doctrine', 'Anchors the line like a stubborn mountain.'],
-      ['Verdict', 'Moves for no one. The rope accepts this.'] ] },
-    { name: 'Basheer', initials: 'BR', num: 14, event: 1, lines: [
-      ['Callsign', 'Sentinel of the Net Titans.'],
-      ['Doctrine', 'The net has never won an argument.'],
-      ['Verdict', 'Guards his half like a state secret.'] ] },
-    { name: 'SarinJalal', initials: 'SL', num: 21, event: 2, lines: [
-      ['Callsign', 'Herald of the Grand Chaos Gauntlet.'],
-      ['Doctrine', 'Rules optional. Glory mandatory.'],
-      ['Verdict', 'Turns confusion into undisputed points.'] ] },
-    { name: 'Shameer', initials: 'SM', num: 17, event: 6, lines: [
-      ['Callsign', 'Vanguard of the Leap of a Thousand Bounds.'],
-      ['Doctrine', 'Half athlete, half kangaroo, fully committed.'],
-      ['Verdict', 'Bounces where others stumble.'] ] },
-    { name: 'Reas', initials: 'RS', num: 23, event: 5, lines: [
-      ['Callsign', 'Warden of the Balance of Fates.'],
-      ['Doctrine', 'Steady nerves, suspiciously fast walk.'],
-      ['Verdict', 'The lemon has never dared to fall.'] ] }
-  ];
-
+  /* ---- jersey art ------------------------------------------------------ */
   var KITS = ['#2A3346', '#243043', '#303A50', '#28313F', '#37425A', '#222B3A', '#2F3A4E', '#2B3648'];
   var uid = 0;
   function jersey(p) {
@@ -132,22 +64,26 @@
       + 'fill="' + ink + '">' + p.num + '</text></svg>';
   }
 
-  /* ---- picker grid ----------------------------------------------------- */
+  /* ---- picker grid: built synchronously, before the engine measures ---- */
   var grid = $('squad-grid');
-  PEOPLE.forEach(function (p, i) {
-    var el = document.createElement('article');
-    el.className = 'pick' + (p.captain ? ' pick--captain' : '');
-    el.tabIndex = 0; el.setAttribute('role', 'button');
-    el.setAttribute('aria-label', 'Load ' + p.name);
-    el.dataset.i = i; el.setAttribute('data-sc-tilt', '5');
-    el.innerHTML = '<div class="pick__media">' + jersey(p)
-      + (p.captain ? '<span class="pick__flag">Captain</span>' : '')
-      + (p.splat ? '<span class="pick__badge pick__badge--live">3D</span>'
-                 : '<span class="pick__badge">Placeholder</span>')
-      + '</div><div class="pick__body"><h3 class="display pick__name">' + esc(p.name) + '</h3>'
-      + '<span class="pick__event">' + esc(EVENTS[p.event].epic) + '</span></div>';
-    grid.appendChild(el);
-  });
+  function buildGrid() {
+    PEOPLE.forEach(function (p, i) {
+      var s = slug(p.name);
+      var a = document.createElement('a');
+      a.className = 'pick' + (p.captain ? ' pick--captain' : '');
+      a.href = '?player=' + s;
+      a.dataset.i = i; a.dataset.slug = s; a.setAttribute('data-sc-tilt', '5');
+      // The badge is filled in once the figure manifest arrives; it is
+      // absolutely positioned, so painting it later moves nothing.
+      a.innerHTML = '<div class="pick__media">' + jersey(p)
+        + (p.captain ? '<span class="pick__flag">Captain</span>' : '')
+        + '<span class="pick__badge" hidden></span>'
+        + '</div><div class="pick__body"><h3 class="display pick__name">' + esc(p.name) + '</h3>'
+        + '<span class="pick__event">' + esc(EVENTS[p.event].epic) + '</span></div>';
+      grid.appendChild(a);
+    });
+  }
+  buildGrid();
 
   /* ---- engine + renderer setup ----------------------------------------- */
   var arena = $('arena'), mark = $('mark'), embersCanvas = $('embers'), loadEl = $('load');
@@ -160,12 +96,56 @@
   var engine = window.ScrollCraft ? ScrollCraft.mount(document.body) : null;
   var glInfo = window.FalconSplat ? FalconSplat.probe() : { supported: false, software: false };
   var profile = isMobile() ? CFG.mobile : CFG.desktop;
-  if (glInfo.software) profile = Object.assign({}, profile, { maxCount: Math.min(profile.maxCount, 70000), maxDpr: 1 });
-  function cameraDist() {
-    if (!profile.fitWidth) return profile.dist;
-    var aspect = Math.max(innerWidth, 1) / Math.max(innerHeight, 1);
-    var halfTan = Math.tan((CFG.fov * Math.PI / 180) / 2);
-    return Math.max(profile.dist, profile.fitWidth / (2 * halfTan * aspect));
+  // A software rasteriser gets a smaller splat budget; the files are
+  // importance-sorted, so the first N splats are the body, not noise.
+  function budget(prof) { return glInfo.software ? Object.assign({}, prof, { maxCount: Math.min(prof.maxCount, 70000), maxDpr: 1 }) : prof; }
+  profile = budget(profile);
+  function frameOf(p) { return (p && p.frame) || {}; }
+  function cameraDist(p) {
+    var base = profile.dist;
+    if (profile.fitWidth) {
+      var aspect = Math.max(innerWidth, 1) / Math.max(innerHeight, 1);
+      var halfTan = Math.tan((CFG.fov * Math.PI / 180) / 2);
+      base = Math.max(profile.dist, profile.fitWidth / (2 * halfTan * aspect));
+    }
+    return base * (frameOf(p).distScale || 1);
+  }
+
+  /* ---- figures: the manifest maps slug -> file ------------------------- */
+  var FIGURES = {}, PLACEHOLDER = null;
+  function loadFigures() {
+    return fetch(CFG.manifest, { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('figures.json ' + r.status); return r.json(); })
+      .then(function (m) { FIGURES = m.figures || {}; PLACEHOLDER = FIGURES[m.placeholder] || null; })
+      .catch(function (err) { console.warn('[roster] figure manifest unavailable, everyone on the placeholder', err); });
+  }
+  function figureFor(p) {
+    var f = FIGURES[slug(p.name)];
+    if (f) return { file: f.file, rev: f.rev, count: f.count, live: true };
+    if (PLACEHOLDER) return { file: PLACEHOLDER.file, rev: PLACEHOLDER.rev, count: PLACEHOLDER.count, live: false };
+    return { file: CFG.placeholderFile, rev: '', count: 0, live: false };
+  }
+  function figureUrl(f) { return f.file + (f.rev ? '?v=' + f.rev : ''); }
+  // Players with a capture first, then the rest; players.js order inside each
+  // group. Moving cards around does not change the grid's height, so the
+  // engine's measurements from mount time still hold.
+  function orderGrid() {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.pick'));
+    cards.sort(function (a, b) {
+      var la = figureFor(PEOPLE[+a.dataset.i]).live ? 0 : 1;
+      var lb = figureFor(PEOPLE[+b.dataset.i]).live ? 0 : 1;
+      return (la - lb) || (+a.dataset.i - +b.dataset.i);
+    });
+    cards.forEach(function (c) { grid.appendChild(c); });
+  }
+  function paintBadges() {
+    grid.querySelectorAll('.pick').forEach(function (el) {
+      var live = figureFor(PEOPLE[+el.dataset.i]).live;
+      var b = el.querySelector('.pick__badge');
+      b.textContent = live ? '3D' : 'Placeholder';
+      b.classList.toggle('pick__badge--live', live);
+      b.hidden = false;
+    });
   }
 
   /* ---- the selectable subject ------------------------------------------ */
@@ -220,38 +200,79 @@
   function mountSubject(p) {
     if (splat) { splat.destroy(); splat = null; }
     var cv = freshCanvas();
+    var fig = figureFor(p), frame = frameOf(p);
     arena.classList.remove('is-live'); arena.classList.remove('no-gl');
     if (!(glInfo.supported && window.FalconSplat)) { arena.classList.add('no-gl'); return; }
     arena.classList.add('is-loading');
-    splat = FalconSplat.create(cv, { center: CFG.center, up: CFG.up, fov: CFG.fov, accent: CFG.accent,
+    splat = FalconSplat.create(cv, { center: frame.center || CFG.center, up: frame.up || CFG.up, fov: CFG.fov, accent: CFG.accent,
       maxDpr: profile.maxDpr, maxCount: profile.maxCount, scatter: CFG.scatter });
     if (!splat) { arena.classList.add('no-gl'); return; }
-    splat.set({ yaw: CFG.startYaw, pitch: CFG.pitch, dist: cameraDist(), shift: profile.shift, assemble: 1 });
-    loadEl.textContent = 'Loading ' + p.name;
-    splat.on('progress', function (pr) { loadEl.textContent = 'Loading ' + p.name + ' ' + Math.round(pr * 100) + '%'; });
+    splat.set({ yaw: CFG.startYaw, pitch: CFG.pitch, dist: cameraDist(p), shift: profile.shift, assemble: 1 });
+    var label = fig.live ? p.name : 'placeholder for ' + p.name;
+    loadEl.textContent = 'Loading ' + label;
+    splat.on('progress', function (pr) { loadEl.textContent = 'Loading ' + label + ' ' + Math.round(pr * 100) + '%'; });
     splat.on('paint', function () { arena.classList.add('is-live'); loadEl.textContent = ''; });
-    splat.load(p.splat || 'assets/avatar.splat').catch(function () { arena.classList.add('no-gl'); });
+    splat.load(figureUrl(fig)).catch(function () { arena.classList.add('no-gl'); });
   }
 
-  function selectPerson(i, doScroll) {
-    doScroll = doScroll !== false;
-    if (i === current) { if (doScroll) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
+  // opts.scroll: return to the top after the swap (a click does, history does not)
+  function selectPerson(i, opts) {
+    opts = opts || {};
+    if (i === current) { if (opts.scroll) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); return; }
     current = i;
-    var p = PEOPLE[i];
-    grid.querySelectorAll('.pick').forEach(function (el) { el.classList.toggle('is-selected', +el.dataset.i === i); });
+    var p = PEOPLE[i], fig = figureFor(p);
+    grid.querySelectorAll('.pick').forEach(function (el) {
+      var on = +el.dataset.i === i;
+      el.classList.toggle('is-selected', on);
+      if (on) el.setAttribute('aria-current', 'page'); else el.removeAttribute('aria-current');
+    });
+    document.title = p.name + ' · Team Falcon';
     rname.textContent = p.name;
-    rsub.textContent = p.splat ? 'Respawned. Facing you.' : 'Placeholder figure · 3D coming soon';
+    rsub.textContent = fig.live ? 'Respawned. Facing you.' : 'Placeholder figure · 3D coming soon';
     buildDossier(p);
     mountSubject(p);
     needsMeasure = true;
     requestAnimationFrame(function () { fitOneLine(rname); });
-    if (doScroll) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    if (opts.scroll) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   }
 
-  grid.addEventListener('click', function (e) { var c = e.target.closest('.pick'); if (c) selectPerson(+c.dataset.i); });
-  grid.addEventListener('keydown', function (e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var c = e.target.closest('.pick'); if (c) { e.preventDefault(); selectPerson(+c.dataset.i); }
+  /* ---- routing: the URL names the player -------------------------------- */
+  function indexOfSlug(s) {
+    for (var k = 0; k < PEOPLE.length; k++) if (slug(PEOPLE[k].name) === s) return k;
+    return -1;
+  }
+  function playerIndexFromURL() {
+    var s = new URLSearchParams(location.search).get('player');
+    return s ? indexOfSlug(slug(s)) : -1;
+  }
+  // The captain once his capture exists; until then the first player in
+  // players.js order with a live figure, so the landing shows a real capture.
+  function defaultIndex() {
+    var d = indexOfSlug(slug(DEFAULT_PLAYER));
+    if (d >= 0 && figureFor(PEOPLE[d]).live) return d;
+    for (var k = 0; k < PEOPLE.length; k++) if (figureFor(PEOPLE[k]).live) return k;
+    return Math.max(d, 0);
+  }
+
+  grid.addEventListener('click', function (e) {
+    var a = e.target.closest('a.pick');
+    if (!a) return;
+    // Modified or non-primary clicks keep their native meaning (new tab etc.)
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    history.pushState({ player: a.dataset.slug }, '', a.getAttribute('href'));
+    selectPerson(+a.dataset.i, { scroll: true });
+  });
+  addEventListener('popstate', function () {
+    // The stylesheet's smooth scroll-behavior makes Chrome animate history
+    // scroll restoration too, slowly enough that the next back/forward can
+    // cancel it. Restore instantly, then give anchors their smoothness back.
+    document.documentElement.style.scrollBehavior = 'auto';
+    setTimeout(function () { document.documentElement.style.scrollBehavior = ''; }, 150);
+    var i = playerIndexFromURL();
+    if (i < 0) i = defaultIndex();
+    // Hash-anchor navigation also fires popstate; only swap when the player changed.
+    if (i !== current) selectPerson(i, { scroll: false });
   });
 
   /* ---- measuring ------------------------------------------------------- */
@@ -378,9 +399,8 @@
   /* ---- wiring ---------------------------------------------------------- */
   function relayout() {
     vh = innerHeight; vw = innerWidth; needsMeasure = true; sizeEmbers();
-    profile = isMobile() ? CFG.mobile : CFG.desktop;
-    if (glInfo.software) profile = Object.assign({}, profile, { maxCount: Math.min(profile.maxCount, 70000), maxDpr: 1 });
-    if (splat) { splat.resize(); splat.set({ dist: cameraDist(), shift: profile.shift }); }
+    profile = budget(isMobile() ? CFG.mobile : CFG.desktop);
+    if (splat) { splat.resize(); splat.set({ dist: cameraDist(PEOPLE[current]), shift: profile.shift }); }
     dossierLines.querySelectorAll('[data-fit]').forEach(fitOneLine); fitOneLine(rname);
   }
   addEventListener('resize', function () { if (innerWidth === vw && isMobile()) { vh = innerHeight; needsMeasure = true; return; } relayout(); }, { passive: true });
@@ -389,9 +409,26 @@
   document.addEventListener('visibilitychange', function () { if (splat) splat.pause(document.hidden); });
 
   seedEmbers(); sizeEmbers(); measure();
-  var start = 0; for (var k = 0; k < PEOPLE.length; k++) if (PEOPLE[k].name === 'PMMuneer') { start = k; break; }
-  selectPerson(start, false);   // default subject: PMMuneer, no scroll
   requestAnimationFrame(frame);
 
-  window.FALCON_ROSTER = { people: PEOPLE, select: selectPerson };
+  // Boot: the grid and engine are already up; only the first subject waits
+  // for the (tiny) manifest so it knows which file to fetch.
+  loadFigures().then(function () {
+    paintBadges();
+    orderGrid();
+    var i = playerIndexFromURL();
+    if (i < 0) {
+      i = defaultIndex();
+      // A bad or stale player link should not be re-shared: clean it.
+      if (new URLSearchParams(location.search).has('player')) history.replaceState(null, '', location.pathname + location.hash);
+    }
+    selectPerson(i, { scroll: false });
+  });
+
+  window.FALCON_ROSTER = {
+    people: PEOPLE, select: selectPerson,
+    current: function () { return current; },
+    splat: function () { return splat; },
+    figures: function () { return FIGURES; }
+  };
 })();

@@ -1,0 +1,101 @@
+{
+  "placeholder": "avatar",
+  "figures": {
+    "ahamedkabir": {
+      "file": "assets/ahamedkabir.splat",
+      "rev": "1194c313",
+      "bytes": 5615168,
+      "count": 175474,
+      "center": [
+        0.014,
+        -0.069,
+        -0.261
+      ],
+      "extent": [
+        0.787,
+        0.911,
+        1.357
+      ]
+    },
+    "avatar": {
+      "file": "assets/avatar.splat",
+      "rev": "10bcdd41",
+      "bytes": 6498624,
+      "count": 203082,
+      "center": [
+        0.021,
+        0.016,
+        -0.259
+      ],
+      "extent": [
+        1.016,
+        1.182,
+        1.299
+      ]
+    },
+    "bajal": {
+      "file": "assets/bajal.splat",
+      "rev": "17b2c6fd",
+      "bytes": 5776672,
+      "count": 180521,
+      "center": [
+        0.017,
+        -0.038,
+        -0.192
+      ],
+      "extent": [
+        0.791,
+        0.999,
+        1.367
+      ]
+    },
+    "pmmuneer": {
+      "file": "assets/pmmuneer.splat",
+      "rev": "2958e1dc",
+      "bytes": 6679296,
+      "count": 208728,
+      "center": [
+        -0.011,
+        0.054,
+        -0.408
+      ],
+      "extent": [
+        1.258,
+        1.137,
+        1.055
+      ]
+    },
+    "shamlik": {
+      "file": "assets/shamlik.splat",
+      "rev": "4b330908",
+      "bytes": 6220128,
+      "count": 194379,
+      "center": [
+        -0.003,
+        -0.036,
+        -0.264
+      ],
+      "extent": [
+        0.803,
+        1,
+        1.285
+      ]
+    },
+    "sinashshajahan": {
+      "file": "assets/sinashshajahan.splat",
+      "rev": "699a3952",
+      "bytes": 6282144,
+      "count": 196317,
+      "center": [
+        0.006,
+        -0.065,
+        -0.143
+      ],
+      "extent": [
+        0.822,
+        1.042,
+        1.516
+      ]
+    }
+  }
+}

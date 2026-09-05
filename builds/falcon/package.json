@@ -1,10 +1,12 @@
 {
   "name": "falcon",
   "version": "1.0.0",
-  "description": "",
+  "description": "Team Falcon roster site: one page per player with a live Gaussian-splat figure.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check": "node ../../tools/check-roster.mjs",
+    "figures": "node ../../tools/build-figures.mjs",
+    "e2e:roster": "node lab/roster_e2e.mjs"
   },
   "keywords": [],
   "author": "",

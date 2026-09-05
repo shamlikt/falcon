@@ -1,5 +1,7 @@
 # Falcon: brief
 
+> **Superseded (2026-09-05).** The single-player Kabeer page this brief describes became the Team Falcon roster: `index.html` now opens one of sixteen players (URL `?player=<slug>`), figures are discovered from `<Name>.ply` files by `tools/build-figures.mjs`, and player data lives in `players.js`. The arena, dossier, respawn and close below are the grammar the roster still runs on.
+
 **Self-authored, not interviewed.**
 The run was autonomous and the user was not reachable for questions.
 Everything marked *evidence* comes verbatim from the one request the user typed.

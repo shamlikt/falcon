@@ -7,6 +7,7 @@ builds/falcon/lab/shots/
 builds/falcon/lab/reduced/
 builds/falcon/lab/mobile/
 builds/falcon/lab/mobile-run1/
+builds/falcon/lab/roster/
 builds/falcon/lab/*.png
 builds/falcon/lab/*.log
 builds/falcon/lab/sheet.html
