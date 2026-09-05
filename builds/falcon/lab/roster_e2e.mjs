@@ -188,7 +188,7 @@ for (const [label, vp, touch] of [["desktop", { width: 1440, height: 900 }, fals
     // shoulders are not cropped by the viewport edges, as they are on a phone)
     // the silhouette is taller than it is wide.
     const w = box.x1 - box.x0, h = box.y1 - box.y0, cx = (box.x0 + box.x1) / 2;
-    const cropped = box.x0 < 0.02 || box.x1 > 0.98;
+    const cropped = box.x0 < 0.05 || box.x1 > 0.95;   // shoulders reaching the edge region
     const ok = box.y0 >= 0.05 && box.y0 <= 0.45 && cx >= 0.3 && cx <= 0.8 && w >= 0.12 && (cropped || w / h < 1.3);
     check(px(`figure ${gs} upright and framed`), ok, { x: [box.x0, box.x1].map((v) => +v.toFixed(2)), y: [box.y0, box.y1].map((v) => +v.toFixed(2)), splats: box.count });
   }

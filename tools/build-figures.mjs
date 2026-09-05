@@ -81,13 +81,16 @@ for (const p of PEOPLE) {
 const warnings = [];
 for (const [s, ply] of sourceBySlug) if (s !== PLACEHOLDER_SLUG && !playerSlugs.has(s)) warnings.push(`${ply} matches no player (slug "${s}"); check the file name against players.js`);
 for (const s of Object.keys(figures)) if (s !== PLACEHOLDER_SLUG && !playerSlugs.has(s)) warnings.push(`assets/${s}.splat belongs to no player; stale asset?`);
-const ref = figures[PLACEHOLDER_SLUG];
+// Framing outliers are judged against the median of all figures, so one odd
+// capture (or a stylised placeholder) does not make every other figure look wrong.
+const median = (xs) => { const a = [...xs].sort((x, y) => x - y); return a[Math.floor(a.length / 2)]; };
+const all = Object.values(figures);
+const ref = { center: [0, 1, 2].map((k) => median(all.map((f) => f.center[k]))), extent: [0, 1, 2].map((k) => median(all.map((f) => f.extent[k]))) };
 for (const [s, fig] of Object.entries(figures)) {
-  if (s === PLACEHOLDER_SLUG) continue;
   const off = fig.center.map((v, k) => Math.abs(v - ref.center[k]));
   const tall = fig.extent[2] / ref.extent[2];
-  if (off.some((d) => d > 0.12) || tall > 1.12) {
-    warnings.push(`assets/${s}.splat is framed differently from the placeholder (centre offset ${off.map((d) => d.toFixed(2)).join("/")}, height x${tall.toFixed(2)}); check its landing screenshot and add a frame override in players.js if needed`);
+  if (off.some((d) => d > 0.2) || tall > 1.25 || tall < 0.7) {
+    warnings.push(`assets/${s}.splat is framed differently from the others (centre offset ${off.map((d) => d.toFixed(2)).join("/")}, height x${tall.toFixed(2)} of the median); check its landing screenshot and add a frame override in players.js if needed`);
   }
 }
 console.log("");

@@ -11,7 +11,7 @@ The folder `builds/falcon/` is served as-is; there is no bundler and no build st
 
 | Piece | Path | Notes |
 |---|---|---|
-| Page | `builds/falcon/index.html` | One page for all 16 players, routed by `?player=<slug>` |
+| Page | `builds/falcon/index.html` | One page for all 20 players, routed by `?player=<slug>` |
 | Redirect stub | `builds/falcon/roster.html` | Old links; forwards to `index.html` keeping the query |
 | Data | `builds/falcon/players.js` | The only copy of names, numbers, events and captions |
 | Page script | `builds/falcon/roster.js` | Routing, figure loading, dossier, picker |
@@ -57,7 +57,7 @@ Run all of these before every push that changes the site.
    node tools/check-roster.mjs
    ```
 
-   Expected: `16 players, 48 captions, 0 failure(s), 0 warning(s)`.
+   Expected: `20 players, 60 captions, 0 failure(s), 0 warning(s)`.
    A non-zero exit lists exactly what is wrong (a name not on the poster, a duplicate number or caption, a caption that never names its event).
 
 2. Make sure the figure manifest is current and idempotent.
@@ -89,7 +89,7 @@ Run all of these before every push that changes the site.
    cd ../..
    ```
 
-   Expected last line: `50 checks, 0 failure(s). Screenshots in lab/roster/`.
+   Expected last line: `<N> checks, 0 failure(s). Screenshots in lab/roster/` (N grows with the number of captured figures).
    It covers the default player, deep links, the placeholder path, unknown slugs, picker clicks, back and forward, hash anchors, card order, horizontal overflow, the no-WebGL fallback, and a framing screenshot of every captured figure at desktop and phone size.
    Open `builds/falcon/lab/roster/desktop_<slug>.png` for any new or changed figure and confirm the head is upright, facing left of centre, and not clipped.
 
@@ -194,7 +194,7 @@ Finally open the live URL in a real browser, scroll the landing figure through t
 
 1. Copy the capture to the repo root, named after the player: `<Name>.ply`.
    Matching ignores case, spaces and punctuation, so `Nabeela Abdul` matches `NabeelaAbdul.ply`, `nabeela_abdul.ply` or `nabeelaabdul.ply`.
-   The name must be one of the 16 in `players.js`.
+   The name must be one in `players.js`; add a new player there first (name, initials, number, event, three captions).
 2. Build.
 
    ```bash
@@ -233,6 +233,7 @@ Finally open the live URL in a real browser, scroll the landing figure through t
 
 1. Edit `builds/falcon/players.js` only.
    Keep exactly three lines per player labelled Callsign, Doctrine and Verdict, keep every line unique, and make at least one line mention the player's event.
+When adding a player, also add the name to the squad list in `tools/check-roster.mjs`.
    The order of `PEOPLE` is the display order inside each group (captured first, then placeholders).
 2. Run `node tools/check-roster.mjs`, then the end-to-end suite, then commit and push.
    Renaming a player changes their slug, so rename their `.ply` and rebuild figures in the same change.

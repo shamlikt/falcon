@@ -26,14 +26,27 @@
     { epic: 'The Leap of a Thousand Bounds', real: 'Sack Race' }
   ];
 
-  // Display priority. The page shows players WITH a capture first (in this
-  // order), then players still on the placeholder (in this order). A player
-  // moves between the two groups automatically when their .ply is built.
+  // Display priority: captains first, then the rest. The page shows players
+  // WITH a capture first (in this order), then players still on the
+  // placeholder (in this order). A player moves between the two groups
+  // automatically when their .ply is built.
   var PEOPLE = [
+    { name: 'Lifin', initials: 'LF', num: 10, captain: true, event: 0, lines: [
+      ['Callsign', 'Supreme Warlord of the Odyssey of the War of Thugs.'],
+      ['Doctrine', 'Where the rope leads, the enemy follows.'],
+      ['Verdict', 'Never lost a war he started.'] ] },
+    { name: 'Ashna', initials: 'AS', num: 7, captain: true, event: 1, lines: [
+      ['Callsign', 'Co-Sovereign of the Falcons.'],
+      ['Doctrine', 'Serene in the storm, merciless at the net.'],
+      ['Verdict', 'Executes the play before you finish blinking.'] ] },
     { name: 'AhamedKabir', initials: 'AK', num: 5, event: 0, lines: [
       ['Callsign', 'Ironhand of the War of Thugs.'],
       ['Doctrine', 'The rope has filed a formal complaint.'],
       ['Verdict', 'Anchors the line like the ground owes him money.'] ] },
+    { name: 'Firoze Kotta', initials: 'FK', num: 20, event: 0, lines: [
+      ['Callsign', 'Bulwark of the Odyssey of the War of Thugs.'],
+      ['Doctrine', 'Digs in once, and the ground agrees.'],
+      ['Verdict', 'Has never been the one who moved.'] ] },
     { name: 'PMMuneer', initials: 'PM', num: 2, event: 3, lines: [
       ['Callsign', 'Marshal of the Everlasting Sprint Saga.'],
       ['Doctrine', 'Runs like the deadline is personal.'],
@@ -50,14 +63,6 @@
       ['Callsign', 'Colossus of the War of Thugs.'],
       ['Doctrine', 'A mountain that learned to lean back.'],
       ['Verdict', 'Moves for no one. The rope accepts this.'] ] },
-    { name: 'Lifin', initials: 'LF', num: 10, captain: true, event: 0, lines: [
-      ['Callsign', 'Supreme Warlord of the Odyssey of the War of Thugs.'],
-      ['Doctrine', 'Where the rope leads, the enemy follows.'],
-      ['Verdict', 'Never lost a war he started.'] ] },
-    { name: 'Ashna', initials: 'AS', num: 7, captain: true, event: 1, lines: [
-      ['Callsign', 'Co-Sovereign of the Falcons.'],
-      ['Doctrine', 'Serene in the storm, merciless at the net.'],
-      ['Verdict', 'Executes the play before you finish blinking.'] ] },
     { name: 'Nabeela Abdul', initials: 'NA', num: 4, event: 2, lines: [
       ['Callsign', 'Keeper of the Grand Chaos Gauntlet.'],
       ['Doctrine', 'Every fun game becomes a documented conquest.'],
@@ -93,7 +98,20 @@
     { name: 'Reas', initials: 'RS', num: 23, event: 5, lines: [
       ['Callsign', 'Warden of the Balance of Fates.'],
       ['Doctrine', 'Steady nerves, suspiciously fast walk.'],
-      ['Verdict', 'The lemon has never dared to fall.'] ] }
+      ['Verdict', 'The lemon has never dared to fall.'] ] },
+    // Joined after the poster was printed.
+    { name: 'Sehiya', initials: 'SY', num: 16, event: 3, lines: [
+      ['Callsign', 'Torchbearer of the Everlasting Sprint Saga.'],
+      ['Doctrine', 'The baton arrives before the hand that passed it.'],
+      ['Verdict', 'Finishes laps the rest are still planning.'] ] },
+    { name: 'Ashiyana', initials: 'AY', num: 18, event: 4, lines: [
+      ['Callsign', 'Heir to the Throne of the Last Seat.'],
+      ['Doctrine', 'Hears the music stop a beat before it does.'],
+      ['Verdict', 'The chair was never in doubt. Only the others were.'] ] },
+    { name: 'Amirah', initials: 'AM', num: 19, event: 1, lines: [
+      ['Callsign', 'Storm Caller of the Net Titans.'],
+      ['Doctrine', 'Every serve lands like a verdict.'],
+      ['Verdict', 'The net learned her name the hard way.'] ] }
   ];
 
   // The one name rule. "Nabeela Abdul", "nabeela_abdul.ply" and

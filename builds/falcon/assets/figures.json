@@ -3,18 +3,66 @@
   "figures": {
     "ahamedkabir": {
       "file": "assets/ahamedkabir.splat",
-      "rev": "1194c313",
-      "bytes": 5615168,
-      "count": 175474,
+      "rev": "d69375c5",
+      "bytes": 7023264,
+      "count": 219477,
       "center": [
-        0.014,
-        -0.069,
+        -0.004,
+        0.063,
         -0.261
       ],
       "extent": [
-        0.787,
-        0.911,
-        1.357
+        1.196,
+        1.142,
+        1.373
+      ]
+    },
+    "amirah": {
+      "file": "assets/amirah.splat",
+      "rev": "3dde5eab",
+      "bytes": 8417184,
+      "count": 263037,
+      "center": [
+        -0.009,
+        0.027,
+        -0.184
+      ],
+      "extent": [
+        1.204,
+        1.1,
+        1.552
+      ]
+    },
+    "ashiyana": {
+      "file": "assets/ashiyana.splat",
+      "rev": "c5eecde6",
+      "bytes": 5220352,
+      "count": 163136,
+      "center": [
+        0.007,
+        -0.026,
+        -0.352
+      ],
+      "extent": [
+        1.24,
+        1.043,
+        1.212
+      ]
+    },
+    "ashna": {
+      "file": "assets/ashna.splat",
+      "rev": "b405f75f",
+      "bytes": 8541568,
+      "count": 266924,
+      "center": [
+        -0.136,
+        0.169,
+        -0.159
+      ],
+      "extent": [
+        1.409,
+        1.331,
+        1.474
       ]
     },
     "avatar": {
@@ -49,6 +97,38 @@
         1.367
       ]
     },
+    "firozekotta": {
+      "file": "assets/firozekotta.splat",
+      "rev": "c638c78a",
+      "bytes": 6391200,
+      "count": 199725,
+      "center": [
+        0,
+        -0.061,
+        -0.138
+      ],
+      "extent": [
+        0.818,
+        0.961,
+        1.47
+      ]
+    },
+    "lifin": {
+      "file": "assets/lifin.splat",
+      "rev": "9bc53443",
+      "bytes": 6165344,
+      "count": 192667,
+      "center": [
+        -0.004,
+        0.022,
+        -0.221
+      ],
+      "extent": [
+        0.785,
+        1.143,
+        1.275
+      ]
+    },
     "pmmuneer": {
       "file": "assets/pmmuneer.splat",
       "rev": "2958e1dc",
@@ -63,6 +143,38 @@
         1.258,
         1.137,
         1.055
+      ]
+    },
+    "sehiya": {
+      "file": "assets/sehiya.splat",
+      "rev": "85dcd691",
+      "bytes": 5965216,
+      "count": 186413,
+      "center": [
+        0.006,
+        0.022,
+        -0.432
+      ],
+      "extent": [
+        1.487,
+        1.071,
+        1.092
+      ]
+    },
+    "shameer": {
+      "file": "assets/shameer.splat",
+      "rev": "82c92f08",
+      "bytes": 6563904,
+      "count": 205122,
+      "center": [
+        -0.131,
+        0.068,
+        -0.21
+      ],
+      "extent": [
+        1.147,
+        1.191,
+        1.471
       ]
     },
     "shamlik": {
