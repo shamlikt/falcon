@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Falcon</title>
+<meta name="description" content="Falcon is a five-player squad. Meet Kabeer, the captain, turn him around with your scroll, and see how the team plays.">
+<meta name="theme-color" content="#0A0C12">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A0C12'/><path d='M16 5 27 16 16 27 5 16Z' fill='%23F7B32B'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=Chakra+Petch:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="falcon.css">
+</head>
+<body>
+
+<a class="skip" href="#kabeer">Skip to content</a>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<nav class="hud" aria-label="Site">
+  <a class="hud__tag" href="#top">Falcon</a>
+  <a class="hud__cta btn" href="#join">Join the Falcons</a>
+
+  <div class="hud__dial" id="dial" role="slider" tabindex="0"
+       aria-label="Turn Kabeer. Dragging scrolls the page." aria-valuemin="0" aria-valuemax="359" aria-valuenow="35" aria-valuetext="35 degrees">
+    <svg viewBox="0 0 76 76" aria-hidden="true">
+      <circle class="hud__ring" cx="38" cy="38" r="36"/>
+      <g class="hud__ticks">
+        <line x1="38" y1="4" x2="38" y2="10"/><line x1="72" y1="38" x2="66" y2="38"/>
+        <line x1="38" y1="72" x2="38" y2="66"/><line x1="4" y1="38" x2="10" y2="38"/>
+      </g>
+      <path class="hud__needle" id="needle" d="M38 12 L43 38 L38 44 L33 38 Z"/>
+    </svg>
+    <output class="hud__deg" id="deg" aria-hidden="true"><span id="deg-num">35°</span><small>heading</small></output>
+  </div>
+
+  <ol class="hud__index" id="index">
+    <li><a href="#arrival">Arena</a></li>
+    <li><a href="#kabeer">Dossier</a></li>
+    <li><a href="#respawn">Respawn</a></li>
+    <li><a href="#way">The way</a></li>
+    <li><a href="#squad">Squad</a></li>
+    <li><a href="#join">Join</a></li>
+  </ol>
+</nav>
+
+<main id="top" data-join-url="">
+
+  <!-- The fixed stage. Planes back to front: floor, wordmark, subject, embers. -->
+  <div class="arena" id="arena" data-sc-verify-state="">
+    <div class="arena__floor" aria-hidden="true"></div>
+    <h1 class="arena__mark" id="mark">Falcon</h1>
+    <img class="arena__poster" id="poster" src="assets/poster-desktop.png" width="1440" height="900"
+         alt="Kabeer, captain of Falcon: a 3D scan of his head and shoulders, turned three-quarters toward you.">
+    <canvas class="arena__splat" id="splat" aria-hidden="true"></canvas>
+    <canvas class="arena__embers" id="embers" aria-hidden="true"></canvas>
+    <p class="arena__load" id="load" aria-live="polite">Loading Kabeer</p>
+  </div>
+
+  <!-- 1 · Arrival -->
+  <section class="act act--arrival" id="arrival" data-sc-act="flow" aria-label="Arena">
+    <div class="arrival__copy">
+      <p class="arrival__lede">Five players. One dive. <em>Nobody pushes alone.</em></p>
+      <a class="btn" href="#join">Join the Falcons</a>
+    </div>
+  </section>
+
+  <!-- 2 · Dossier: read while he turns -->
+  <section class="act act--dossier" id="kabeer" data-sc-act="flow" aria-label="Kabeer's dossier">
+    <div class="dossier__line dossier__line--lead" data-sc-in data-sc-stagger="70">
+      <p class="dossier__label">Callsign</p>
+      <h2 class="display dossier__title dossier__title--name">Kabeer</h2>
+      <p class="dossier__body">Captain. He calls the dive, and he goes in first.</p>
+    </div>
+    <div class="dossier__line dossier__line--trail" data-sc-in data-sc-stagger="70">
+      <p class="dossier__label">Role</p>
+      <h3 class="display dossier__title">Entry, then anchor</h3>
+      <p class="dossier__body">Opens the site. Holds it once it is ours.</p>
+    </div>
+    <div class="dossier__line dossier__line--lead" data-sc-in data-sc-stagger="70">
+      <p class="dossier__label">Style</p>
+      <h3 class="display dossier__title">Tempo over aim</h3>
+      <p class="dossier__body">Early and loud beats late and perfect. He would rather force the fight than wait for it.</p>
+    </div>
+    <div class="dossier__line dossier__line--trail" data-sc-in data-sc-stagger="70">
+      <p class="dossier__label">Mains</p>
+      <h3 class="display dossier__title">Whatever the round needs</h3>
+      <p class="dossier__body">Flex pick. Comfortable on three, dangerous on one.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Respawn: the peak. Transparent pinned stage; the subject does the work. -->
+  <section class="act act--respawn" id="respawn" data-sc-act="pin" data-sc-span="3.4" aria-label="Respawn">
+    <div data-sc-stage class="respawn">
+      <div class="sc-copy sc-copy--lead" data-sc-cue="0.02 0.34 0.12 0.3">
+        <p class="respawn__line">Down is not out.</p>
+      </div>
+      <div class="respawn__shade" id="shade" aria-hidden="true"></div>
+      <div class="respawn__stamp" id="stamp" data-sc-cue="0.70 0.95 0.12 0.2" data-sc-rise="0.6">
+        <h2 class="respawn__name">Kabeer</h2>
+        <p class="respawn__sub">Respawned. Facing you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · The Falcon way: hard cut to a lit ground -->
+  <section class="act act--way" id="way" data-sc-act="flow" aria-labelledby="way-title">
+    <div class="sc-wrap way__grid">
+      <div class="way__head" data-sc-in data-sc-stagger="70">
+        <h2 class="display way__title" id="way-title">The Falcon way</h2>
+        <p class="way__intro">Rules we actually play by. Short enough to say over comms while the round is live.</p>
+      </div>
+      <ol class="way__rules" data-sc-in data-sc-stagger="90">
+        <li>
+          <h3 class="display way__rule">Eyes first. Then talons.</h3>
+          <p>Information before aggression. We look, we call, and then we hit together.</p>
+        </li>
+        <li>
+          <h3 class="display way__rule">Nobody pushes alone.</h3>
+          <p>A solo entry is a free kill for them. If you go, someone is on your shoulder.</p>
+        </li>
+        <li>
+          <h3 class="display way__rule">Comms over ego.</h3>
+          <p>Say the call early, even if it turns out wrong. Silence loses more rounds than bad calls do.</p>
+        </li>
+      </ol>
+      <dl class="way__facts" data-sc-in data-sc-stagger="60">
+        <div><dt>Squad</dt><dd>Five starters, one sub</dd></div>
+        <div><dt>Scrims</dt><dd>Two nights a week, fixed</dd></div>
+        <div><dt>Comms</dt><dd>Voice on, always</dd></div>
+        <div><dt>Captain</dt><dd>Kabeer</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 5 · Squad: the rail -->
+  <section class="act act--squad" id="squad" data-sc-act="pan" data-sc-span="3.4" aria-labelledby="squad-title">
+    <div data-sc-stage class="squad">
+      <div class="rail" data-sc-pan="0.05">
+        <div class="rail__lead">
+          <h2 class="display" id="squad-title">The squad</h2>
+          <p>Five players. Kabeer first, because he goes first.</p>
+        </div>
+        <article class="card card--captain" data-sc-tilt="6" style="--card-i:1">
+          <p class="card__role">Captain · Entry</p>
+          <div class="card__mark" aria-hidden="true">K</div>
+          <div><h3 class="display card__name">Kabeer</h3><p class="card__note">Calls the dive. Goes in first.</p></div>
+        </article>
+        <article class="card" data-sc-tilt="6" style="--card-i:2">
+          <p class="card__role">Support</p>
+          <div class="card__mark" aria-hidden="true">V</div>
+          <div><h3 class="display card__name">Vex</h3><p class="card__note">Utility on time, every time.</p></div>
+        </article>
+        <article class="card" data-sc-tilt="6" style="--card-i:3">
+          <p class="card__role">Sniper</p>
+          <div class="card__mark" aria-hidden="true">N</div>
+          <div><h3 class="display card__name">Nyra</h3><p class="card__note">Holds the long angle so nobody else has to.</p></div>
+        </article>
+        <article class="card" data-sc-tilt="6" style="--card-i:4">
+          <p class="card__role">Anchor</p>
+          <div class="card__mark" aria-hidden="true">R</div>
+          <div><h3 class="display card__name">Rook</h3><p class="card__note">Last one on the site. Usually still standing.</p></div>
+        </article>
+        <article class="card" data-sc-tilt="6" style="--card-i:5">
+          <p class="card__role">Flex</p>
+          <div class="card__mark" aria-hidden="true">Z</div>
+          <div><h3 class="display card__name">Zephyr</h3><p class="card__note">Fills whatever the map leaves open.</p></div>
+        </article>
+        <div class="rail__tail">
+          <p>One seat open on the bench.</p>
+          <a class="btn" href="#join">Join the Falcons</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Join: the close. Last element on the page, opaque ground, cues hold. -->
+  <section class="act act--join" id="join" data-sc-act="pin" data-sc-span="1.2" aria-labelledby="join-title">
+    <div data-sc-stage class="join" data-sc-spotlight>
+      <div class="join__inner" data-sc-cue="0 1 0 0">
+        <h2 class="display join__title" id="join-title">Your callsign here.</h2>
+        <div class="join__field">
+          <label for="callsign">Callsign</label>
+          <input id="callsign" type="text" maxlength="14" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Type it">
+        </div>
+        <div class="plate" aria-live="polite">
+          <span class="plate__team">Falcon</span>
+          <span class="plate__name" id="plate-name">Recruit</span>
+          <span class="plate__role">Recruit</span>
+        </div>
+        <p class="join__hint">Preview only. Nothing is sent from this page.</p>
+        <a class="btn btn--big" id="join-cta" href="#join" data-sc-magnet="0.26">Join the Falcons</a>
+        <p class="join__status" id="join-status" role="status"></p>
+      </div>
+      <footer class="foot">
+        <strong>Falcon</strong>
+        <p>Kabeer's avatar is a live 3D Gaussian splat: 203,082 splats rendered in your browser.</p>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script src="splat.js"></script>
+<script src="falcon.js"></script>
+</body>
+</html>

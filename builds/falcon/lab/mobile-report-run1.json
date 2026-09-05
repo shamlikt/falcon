@@ -1,0 +1,1079 @@
+{
+  "doc": {
+    "height": 11574,
+    "vh": 844,
+    "acts": [
+      "flow",
+      "flow",
+      "pin",
+      "flow",
+      "pan",
+      "pin"
+    ],
+    "world": null
+  },
+  "report": [
+    {
+      "i": 0,
+      "y": 0,
+      "pct": 0,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        3718,
+        7691,
+        10561
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:36|a:1.00|mark:1.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 1,
+      "y": 74,
+      "pct": 1,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        3644,
+        7617,
+        10487
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:42|a:1.00|mark:0.9|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 2,
+      "y": 162,
+      "pct": 2,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        3556,
+        7529,
+        10399
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:51|a:1.00|mark:0.9|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 3,
+      "y": 486,
+      "pct": 5,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        3232,
+        7205,
+        10075
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:84|a:1.00|mark:0.6|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 4,
+      "y": 788,
+      "pct": 7,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        2930,
+        6903,
+        9773
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:114|a:1.00|mark:0.3|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 5,
+      "y": 810,
+      "pct": 8,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        2908,
+        6881,
+        9751
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:117|a:1.00|mark:0.3|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 6,
+      "y": 1502,
+      "pct": 14,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        2216,
+        6189,
+        9059
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:177|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 7,
+      "y": 2216,
+      "pct": 21,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        1502,
+        5475,
+        8345
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:234|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 8,
+      "y": 2930,
+      "pct": 27,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        788,
+        4761,
+        7631
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:279|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 9,
+      "y": 3644,
+      "pct": 34,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        74,
+        4047,
+        6917
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:318|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 10,
+      "y": 3759,
+      "pct": 35,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        3932,
+        6802
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:324|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 11,
+      "y": 4148,
+      "pct": 39,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Down is not out.",
+          "dir": "light-on-dark",
+          "worst": 16.98,
+          "mean": 16.98
+        }
+      ],
+      "cues": [
+        {
+          "t": "Down is not out.",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        3543,
+        6413
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:339|a:0.78|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 12,
+      "y": 4537,
+      "pct": 42,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        3154,
+        6024
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:351|a:0.00|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 13,
+      "y": 4926,
+      "pct": 46,
+      "settled": false,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        2765,
+        5635
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:357|a:0.82|mark:0.0|cov:0"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 14,
+      "y": 5315,
+      "pct": 50,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Kabeer Respawned. Facing you.",
+          "dir": "light-on-dark",
+          "worst": 17.02,
+          "mean": 17.02
+        }
+      ],
+      "cues": [
+        {
+          "t": "Kabeer Respawned. Facing you.",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        2376,
+        5246
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": true,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 15,
+      "y": 5704,
+      "pct": 53,
+      "settled": true,
+      "contrast": [],
+      "cues": [
+        {
+          "t": "Kabeer Respawned. Facing you.",
+          "o": 0.45
+        }
+      ],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        0,
+        1987,
+        4857
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": true,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 16,
+      "y": 5783,
+      "pct": 54,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -39,
+        1908,
+        4778
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": true,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 17,
+      "y": 6157,
+      "pct": 57,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -413,
+        1534,
+        4404
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": true,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 18,
+      "y": 6530,
+      "pct": 61,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        -786,
+        1161,
+        4031
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:0"
+      ],
+      "customHold": true,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 19,
+      "y": 6904,
+      "pct": 64,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "flow",
+      "stages": [
+        -1160,
+        787,
+        3657
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 20,
+      "y": 7278,
+      "pct": 68,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -1534,
+        413,
+        3283
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 21,
+      "y": 7652,
+      "pct": 71,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        0
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -1908,
+        39,
+        2909
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 22,
+      "y": 7732,
+      "pct": 72,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -38
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -1988,
+        0,
+        2829
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 23,
+      "y": 8121,
+      "pct": 76,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -400
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -2377,
+        0,
+        2440
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 24,
+      "y": 8510,
+      "pct": 79,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -761
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -2766,
+        0,
+        2051
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 25,
+      "y": 8899,
+      "pct": 83,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1123
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -3155,
+        0,
+        1662
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 26,
+      "y": 9288,
+      "pct": 87,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1485
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -3544,
+        0,
+        1273
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 27,
+      "y": 9677,
+      "pct": 90,
+      "settled": true,
+      "contrast": [],
+      "cues": [],
+      "clips": [],
+      "rails": [
+        -1847
+      ],
+      "wipes": [],
+      "act": "pan",
+      "stages": [
+        -3933,
+        0,
+        884
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 28,
+      "y": 10564,
+      "pct": 98,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4820,
+        -847,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 29,
+      "y": 10597,
+      "pct": 99,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4853,
+        -880,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 30,
+      "y": 10629,
+      "pct": 99,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4885,
+        -912,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 31,
+      "y": 10662,
+      "pct": 99,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4918,
+        -945,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 32,
+      "y": 10694,
+      "pct": 100,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4950,
+        -977,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 33,
+      "y": 10727,
+      "pct": 100,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4983,
+        -1010,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    },
+    {
+      "i": 34,
+      "y": 10730,
+      "pct": 100,
+      "settled": true,
+      "contrast": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recr",
+          "dir": "light-on-dark",
+          "worst": 16.52,
+          "mean": 16.96
+        }
+      ],
+      "cues": [
+        {
+          "t": "Your callsign here. Callsign Falcon Recruit Re",
+          "o": 1
+        }
+      ],
+      "clips": [],
+      "rails": [
+        -1884
+      ],
+      "wipes": [],
+      "act": "pin",
+      "stages": [
+        -4986,
+        -1013,
+        0
+      ],
+      "segs": [],
+      "custom": [
+        "yaw:0|a:1.00|mark:0.0|cov:1"
+      ],
+      "customHold": false,
+      "seg": null,
+      "segp": null,
+      "bg": "#0A0C12"
+    }
+  ],
+  "consoleErrors": [],
+  "failed": [
+    "net::ERR_ABORTED http://localhost:4500/assets/avatar.splat"
+  ]
+}

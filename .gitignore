@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+builds/falcon/node_modules/
+
+# QA / lab outputs (transient capture frames, contact sheets, logs)
+builds/falcon/lab/shots/
+builds/falcon/lab/reduced/
+builds/falcon/lab/mobile/
+builds/falcon/lab/mobile-run1/
+builds/falcon/lab/*.png
+builds/falcon/lab/*.log
+builds/falcon/lab/sheet.html
+
+# large raw 3D source captures (the derived .splat files in assets/ are tracked)
+*.ply
+
+# spreadsheet lock/temp + os cruft
+.~lock.*#
+.DS_Store
