@@ -46,7 +46,11 @@ jobs:
             builds/falcon/ _site/
           du -sh _site
 
+      # enablement lets the first run switch Pages on (source: GitHub Actions)
+      # with the workflow token, so no manual step in the repository settings.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
